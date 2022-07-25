@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>タイトル</title>
+</head>
+<body>
+  <h1><%= @artist_name %>の似ているやーつ</h1>
+  <% @related_artists.each do |artist| %>
+      <p><%= artist.name %></p>
+      <img src="<%= artist.images[0]["url"] %>">
+      <% artist.top_tracks(:JP).each do |track| %>
+          <p><audio controls src="<%= track.preview_url %>"></audio></p>
+      <% end %>
+  <% end %>
+</body>
+</html>
